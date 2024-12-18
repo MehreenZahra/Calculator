@@ -73,7 +73,6 @@ function evaluateExpression(expression) {
         expression = expression.replace(/(\d+)(?=\s*Math\.PI)/g, '$1 * Math.PI'); // Handle cases like 5𝝅
         expression = expression.replace(/(\d+)(?=\s*Math\.E)/g, '$1 * Math.E'); // Handle cases like 5e
         expression = expression.replace(/(\))(?=\s*Math\.PI)/g, '$1 * Math.PI'); // Handle cases like (2 + 3)𝝅
-        expression = expression.replace(/(\))(?=\s*Math\.E)/g, '$1 * Math.E'); // Handle cases like (2 + 3)e
         expression = expression.replace(/(\))(?=\s*e)/g, '$1 * '); // Handle cases like (2 + 3)e
         expression = expression.replace(/(\d+)(?=\()/g, '$1 * '); // Handle cases like 5(3+2)
         expression = expression.replace(/(\))(?=\d)/g, '$1 * '); // Handle cases like (2 + 3)2
@@ -100,7 +99,7 @@ function evaluateExpression(expression) {
             if (isNaN(value) || value <= 0) {
                 return "Error: Invalid Input"; // Handle log of non-positive numbers
             }
-            return Math.log(value).toFixed(10); // Calculate natural logarithm
+            return Math.log(value).toFixed(10); 
         });
         // Handle square roots
         expression = expression.replace(/√(\d+)/g, (match, p1) => {
@@ -149,15 +148,28 @@ function addToHistory(expression, result) {
 
 function updateHistoryDisplay() {
     const historyContainer = document.getElementById('history');
-    historyContainer.innerHTML = '';
+    historyContainer.innerHTML = ''; 
     history.forEach((item, index) => {
         const historyItem = document.createElement('div');
         historyItem.innerText = `${item.expression} = ${item.result}`;
-        historyItem.onclick = () => {
-            screen.value = item.expression;
+
+        // Create a delete icon
+        const deleteIcon = document.createElement('i');
+        deleteIcon.className = 'fas fa-trash'; 
+        deleteIcon.style.cursor = 'pointer'; 
+        deleteIcon.onclick = () => {
+            deleteHistoryItem(index); 
         };
+
+        // Append the delete icon to the history item
+        historyItem.appendChild(deleteIcon);
         historyContainer.appendChild(historyItem);
     });
+}
+
+function deleteHistoryItem(index) {
+    history.splice(index, 1); 
+    updateHistoryDisplay(); 
 }
 
 function clearHistory() {

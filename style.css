@@ -127,7 +127,7 @@ body {
     background: #d1d1d1;
 }
 
-/* Styling for Clear History button */
+
 button#clearHistory {
     width: 100%;
     height: 50px;
@@ -141,4 +141,14 @@ button#clearHistory {
 
 button#clearHistory:hover {
     background: #ff1a1a;
+}
+#history div {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+#history i {
+    margin-left: 10px; 
+    color: red; 
 }
