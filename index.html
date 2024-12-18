@@ -16,45 +16,46 @@
         <div class="buttons">
             <div class="row">
                 <button  id="backSpace" onclick="backSpace()">CE</button>
-                <button  onclick="factorial()">x!</button>
+                <button  onclick="appendFactorial()">x!</button>
                 <button class="btn">(</button>
                 <button class="btn">)</button>
                 <button class="btn">%</button>
-                <button id="clear" onclick="clear()">AC</button>
+                <button id="clear" onclick="screen.value = ''">AC</button>
             </div>
             <div class="row">
-                <button onclick="sin()">sin</button>
-                <button  onclick="pi()">𝝅</button>
+                <button onclick="appendSin()">sin</button>
+                <button  onclick="appendPi()">𝝅</button>
                 <button class="btn">7</button>
                 <button class="btn">8</button>
                 <button class="btn">9</button>
                 <button class="btn">÷</button>
             </div>
             <div class="row">
-                <button  onclick="cos()">cos</button>
-                <button  onclick="log()">log</button>
+                <button  onclick="appendCos()">cos</button>
+                <button  onclick="appendLog()">log</button>
                 <button class="btn">4</button>
                 <button class="btn">5</button>
                 <button class="btn">6</button>
                 <button class="btn">x</button>
             </div>
             <div class="row">
-                <button onclick="tan()">tan</button>
-                <button onclick="squareRoot()">√</button>
+                <button onclick="appendTan()">tan</button>
+                <button onclick="appendSquareRoot()">√</button>
                 <button class="btn">1</button>
                 <button class="btn">2</button>
                 <button class="btn">3</button>
                 <button class="btn">-</button>
             </div>
             <div class="row">
-                <button  onclick="e()">e</button>
-                <button onclick="power()">x<span style="position: relative; bottom: .6em; right: .001em; font-size: small;">y</span></button>
+                <button  onclick="appendE()">e</button>
+                <button onclick="appendExponentiation()">x<span style="position: relative; bottom: .6em; right: .001em; font-size: small;">y</span></button>
                 <button class="btn">0</button>
                 <button class="btn">.</button>
                 <button id="equal" onclick="calculate()">=</button>
                 <button class="btn">+</button>
             </div>
-        
+            <div id="history" class="history"></div> 
+            <button id="clearHistory" onclick="clearHistory()">Clear History</button>
         </div>
     </div>
    
